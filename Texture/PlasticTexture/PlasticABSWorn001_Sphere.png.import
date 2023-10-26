@@ -1,0 +1,27 @@
+[remap]
+
+importer="3d_texture"
+type="CompressedTexture3D"
+uid="uid://che31cvqedbke"
+path.s3tc="res://.godot/imported/PlasticABSWorn001_Sphere.png-e3cd4e8965249222ce80e4aed9e88125.s3tc.ctex3d"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+
+[deps]
+
+source_file="res://Texture/PlasticTexture/PlasticABSWorn001_Sphere.png"
+dest_files=["res://.godot/imported/PlasticABSWorn001_Sphere.png-e3cd4e8965249222ce80e4aed9e88125.s3tc.ctex3d"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+slices/horizontal=8
+slices/vertical=8
