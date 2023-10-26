@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" load_steps=5 format=3 uid="uid://cbl0qchmmn21f"]
+
+[ext_resource type="Texture2D" uid="uid://btmuvqdew08rj" path="res://Texture/WoodTexture/VeneerWhiteOakRandomMatched001_COL_2K_METALNESS.png" id="1_jel0r"]
+[ext_resource type="Texture2D" uid="uid://ib8n1ipd0nwp" path="res://Texture/WoodTexture/VeneerWhiteOakRandomMatched001_METALNESS_2K_METALNESS.png" id="2_85me2"]
+[ext_resource type="Texture2D" uid="uid://beoajtlebmif2" path="res://Texture/WoodTexture/VeneerWhiteOakRandomMatched001_NRM_2K_METALNESS.png" id="3_ur2nf"]
+[ext_resource type="Texture2D" uid="uid://wjv0a6rkxwhv" path="res://Texture/WoodTexture/VeneerWhiteOakRandomMatched001_ROUGHNESS_2K_METALNESS.png" id="4_ndt3n"]
+
+[resource]
+albedo_texture = ExtResource("1_jel0r")
+metallic = 1.0
+metallic_texture = ExtResource("2_85me2")
+roughness_texture = ExtResource("4_ndt3n")
+normal_enabled = true
+normal_texture = ExtResource("3_ur2nf")

@@ -1,0 +1,55 @@
+[gd_scene load_steps=3 format=3 uid="uid://doyyjwdiuuupb"]
+
+[ext_resource type="PackedScene" uid="uid://tgvewpgreb4h" path="res://addons/myaddon/myblocks.tscn" id="1_v8qg7"]
+[ext_resource type="PackedScene" uid="uid://bj0mgxg3yd7fh" path="res://PlayerScene/player.tscn" id="2_xfcro"]
+
+[node name="mygame" type="Node3D"]
+
+[node name="floor" parent="." instance=ExtResource("1_v8qg7")]
+transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 5, -0.00383854, 0.0238318, -0.00535393)
+BlockShape = 1
+
+[node name="wall 1" parent="." instance=ExtResource("1_v8qg7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.64365, 5.66068, 0.895986)
+
+[node name="wall 2" parent="." instance=ExtResource("1_v8qg7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.0314, 5.66068, 0.895986)
+
+[node name="door" parent="." instance=ExtResource("1_v8qg7")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 3.28866, 3.49889, -1.13786)
+
+[node name="Player" parent="." instance=ExtResource("2_xfcro")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.88613, 3.90859, 1.35451)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.754389, 0.656428, 2.24825e-08, 0.432899, 0.497502, 0.751725, 0.493453, 0.567093, -0.659477, 14.3388, 27.9022, -23.7797)
+
+[node name="ramp" parent="." instance=ExtResource("1_v8qg7")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 2.77482, 2.14679, 4.72438)
+
+[node name="parkour block 1" parent="." instance=ExtResource("1_v8qg7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.3829, 2.23125, 0)
+
+[node name="parkour block 2" parent="." instance=ExtResource("1_v8qg7")]
+transform = Transform3D(0.999962, -0.00876144, 0, 0.00876144, 0.999962, 0, 0, 0, 1, 14.453, 4.70476, 0)
+
+[node name="parkour block 3" parent="." instance=ExtResource("1_v8qg7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.5916, 6.59553, 0)
+
+[node name="L shape pt1" parent="." instance=ExtResource("1_v8qg7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 5.11584, 0, 1.97904, 19.2326)
+
+[node name="L shape pt2" parent="." instance=ExtResource("1_v8qg7")]
+transform = Transform3D(0.00530579, 0, -5.11577, 0, 1, 0, 0.999986, 0, 0.0271435, 5.7949, 1.98611, 23.1535)
+
+[node name="RampToBlock" parent="." instance=ExtResource("1_v8qg7")]
+transform = Transform3D(3.24992, 0, 0, 0, 2.8574, 0, 0, 0, 1, 23.2724, 3.88962, 20.6064)
+
+[node name="BlockToRamp" parent="." instance=ExtResource("1_v8qg7")]
+transform = Transform3D(5.93934, 0, 0, 0, 1.4951, 0, 0, 0, 1, 29.2376, 4.8797, 16.7595)
+
+[node name="HideyWall" parent="." instance=ExtResource("1_v8qg7")]
+transform = Transform3D(-0.0240309, 0, -0.999711, 0, 1, 0, 0.999711, 0, -0.0240309, -7.58053, 3.24733, 14.3793)
+
+[node name="Pillar" parent="." instance=ExtResource("1_v8qg7")]
+transform = Transform3D(3.93887, 0, 0, 0, 8.61784, 0, 0, 0, 5.96621, -9.33906, 9.05146, -14.9947)

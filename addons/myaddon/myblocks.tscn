@@ -1,0 +1,37 @@
+[gd_scene load_steps=9 format=3 uid="uid://tgvewpgreb4h"]
+
+[ext_resource type="Script" path="res://addons/myaddon/myblocks.cs" id="1_jj0x7"]
+[ext_resource type="Texture2D" uid="uid://cp5w3bmipb2lj" path="res://Texture/PlasticTexture/PlasticABSWorn001_GLOSS_2K.png" id="2_tm3ht"]
+[ext_resource type="Texture2D" uid="uid://dhidj4q4bwxrk" path="res://Texture/PlasticTexture/PlasticABSWorn001_COL_2K.png" id="3_h8hgx"]
+[ext_resource type="Texture2D" uid="uid://c41g6xmi3oisw" path="res://Texture/PlasticTexture/PlasticABSWorn001_REFL_2K.png" id="4_g2cmp"]
+[ext_resource type="Texture2D" uid="uid://diqmgi70e22u0" path="res://Texture/PlasticTexture/PlasticABSWorn001_NRM_2K.png" id="5_kwscq"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vrjhj"]
+albedo_color = Color(0.501961, 1, 0.501961, 1)
+albedo_texture = ExtResource("2_tm3ht")
+normal_enabled = true
+normal_texture = ExtResource("5_kwscq")
+detail_enabled = true
+detail_mask = ExtResource("4_g2cmp")
+detail_albedo = ExtResource("3_h8hgx")
+detail_normal = ExtResource("5_kwscq")
+uv1_scale = Vector3(11.6667, 11.6667, 11.6667)
+uv2_scale = Vector3(40, 40, 40)
+
+[sub_resource type="BoxMesh" id="BoxMesh_oaqrr"]
+size = Vector3(1, 5, 7)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_oqavf"]
+data = PackedVector3Array(-0.5, 2.5, 3.5, 0.5, 2.5, 3.5, -0.5, -2.5, 3.5, 0.5, 2.5, 3.5, 0.5, -2.5, 3.5, -0.5, -2.5, 3.5, 0.5, 2.5, -3.5, -0.5, 2.5, -3.5, 0.5, -2.5, -3.5, -0.5, 2.5, -3.5, -0.5, -2.5, -3.5, 0.5, -2.5, -3.5, 0.5, 2.5, 3.5, 0.5, 2.5, -3.5, 0.5, -2.5, 3.5, 0.5, 2.5, -3.5, 0.5, -2.5, -3.5, 0.5, -2.5, 3.5, -0.5, 2.5, -3.5, -0.5, 2.5, 3.5, -0.5, -2.5, -3.5, -0.5, 2.5, 3.5, -0.5, -2.5, 3.5, -0.5, -2.5, -3.5, 0.5, 2.5, 3.5, -0.5, 2.5, 3.5, 0.5, 2.5, -3.5, -0.5, 2.5, 3.5, -0.5, 2.5, -3.5, 0.5, 2.5, -3.5, -0.5, -2.5, 3.5, 0.5, -2.5, 3.5, -0.5, -2.5, -3.5, 0.5, -2.5, 3.5, 0.5, -2.5, -3.5, -0.5, -2.5, -3.5)
+
+[node name="myblocks" type="StaticBody3D"]
+script = ExtResource("1_jj0x7")
+
+[node name="texture" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.90239, 0, 0, 0, 1.88999, 0, 0, 0, 1.90643, 0, 1.19209e-07, 0)
+material_override = SubResource("StandardMaterial3D_vrjhj")
+mesh = SubResource("BoxMesh_oaqrr")
+
+[node name="collision" type="CollisionShape3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+shape = SubResource("ConcavePolygonShape3D_oqavf")
