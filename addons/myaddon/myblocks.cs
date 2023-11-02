@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Diagnostics.Metrics;
 using System.Net.Security;
 using System.Security.Cryptography.X509Certificates;
 
@@ -8,17 +9,17 @@ public partial class myblocks : StaticBody3D
 {
 	//Initialization of the variables; includes the Collision + Mesh objects that require to be modified. The exact node is fetched at _Ready(),
 	//which is triggered once after the project is built, and every time the game is run.
-
+	private int counter = 3;
 	public MeshInstance3D MyMesh;
 	public CollisionShape3D MyCol;
 	public string basepath = "res://addons/myaddon/";
 
-    //Enums + enum variables, to populate the exports. Add the name of your custom resources here;
+	//Enums + enum variables, to populate the exports. Add the name of your custom resources here;
 
-    public BlockColors _BlockColor;
-    public Blocktextures _BlockTexture;
-    public BlockShapes _BlockShape;
-    public enum BlockShapes
+	public BlockColors _BlockColor;
+	public Blocktextures _BlockTexture;
+	public BlockShapes _BlockShape;
+	public enum BlockShapes
 	{
 		wall,
 		floor,
@@ -50,26 +51,26 @@ public partial class myblocks : StaticBody3D
 	[Export]
 	public Blocktextures BlockTexture
 	{
-        get => _BlockTexture;
+		get => _BlockTexture;
 		set
 		{
-            _BlockTexture = value;
+			_BlockTexture = value;
 			updateTexture(makepath(0));
-            updateUV();
-        }
-    }
+			updateUV();
+		}
+	}
 
 	[Export]
 	public BlockShapes BlockShape
 	{
-        get => _BlockShape;
-        set
-        {
-            _BlockShape = value;
-            updateShape(makepath(1), makepath(3)); 
+		get => _BlockShape;
+		set
+		{
+			_BlockShape = value;
+			updateShape(makepath(1), makepath(3));
 			updateUV();
-        }
-    }
+		}
+	}
 
 	[Export]
 	public BlockColors BlockColor
@@ -78,20 +79,20 @@ public partial class myblocks : StaticBody3D
 		set
 		{
 			_BlockColor = value;
-            updateColor(makepath(2)); 
-        }
+			updateColor(makepath(2));
+		}
 	}
 
 	//Is used in all cases to create a full path for the resource requested. The currently set request in the enums is fetched in order to
 	//create the path and choose the right element.
 	public string makepath(int option)
-    {
+	{
 		string fullpath;
 		string optionpath = "";
 		string ending = "";
 
-        switch (option)
-        {
+		switch (option)
+		{
 			case 0:
 				ending = _BlockTexture.ToString() + ".tres";
 				optionpath = "textures/";
@@ -111,10 +112,10 @@ public partial class myblocks : StaticBody3D
 			default:
 				GD.Print("You should *NEVER* see this");
 				break;
-        }
+		}
 		fullpath = basepath + optionpath + ending;
 		return fullpath;
-    }
+	}
 
 	//The UpdateColor method, which fetches the data in the .txt, sets the albedo color of the override material and calls for a UV update
 	//because the duplicated texture's default UV is different.
@@ -137,43 +138,38 @@ public partial class myblocks : StaticBody3D
 		MyMesh.Mesh = (Mesh)ResourceLoader.Load(meshpath).Duplicate();
 		MyCol.Shape = (Shape3D)ResourceLoader.Load(shapepath).Duplicate();
 		updateUV();
-    }
+	}
 
 	//Even simpler. Fetches the texture specified, sets it, and then re-checks the color + UV to make sure the shape's resolution is fair.
 	public void updateTexture(string fullpath)
 	{
-        MyMesh.MaterialOverride = (StandardMaterial3D)ResourceLoader.Load(fullpath).Duplicate(); ;
-        updateColor(makepath(2));
-    }
+		MyMesh.MaterialOverride = (StandardMaterial3D)ResourceLoader.Load(fullpath).Duplicate(); ;
+		updateColor(makepath(2));
+	}
 
 	//Updates the UV by fetching the size of the current mesh, then based off a basic calculation, sets the UV to something sensible.
 	//This takes no overload parameters.
 	public void updateUV()
 	{
+		Vector3 scale = this.Scale;
 		Vector3 meshshape = MyMesh.GetAabb().Size;
-		float scalefactor = (meshshape.X * meshshape.Y * meshshape.Z)/3;
-		if (scalefactor < 3)
-		{
-			scalefactor = (meshshape.X * meshshape.Y * meshshape.Z) / 1.5f;
-		}
-		else if (scalefactor > 20)
-		{
-			scalefactor = (meshshape.X * meshshape.Y * meshshape.Z) / 6;
-
-        }
+		float[] scalefactor = new float[3];
+		scalefactor[0] = scale.X * meshshape.X;
+		scalefactor[1] = scale.Y * meshshape.Y;
+		scalefactor[2] = scale.Z * meshshape.Z;
+		float finalscale = scalefactor[0] * scalefactor[1] * scalefactor[2];
+		finalscale = finalscale / MathF.Sqrt(finalscale);
 		var material = (StandardMaterial3D)MyMesh.GetActiveMaterial(0).Duplicate();
-		material.Uv1Scale = new Vector3(scalefactor, scalefactor, scalefactor);
-        MyMesh.MaterialOverride = material;
-    }
+		material.Uv1Scale = new Vector3(finalscale, finalscale, finalscale);
+		material.UV2Scale = new Vector3(finalscale, finalscale, finalscale);
+		MyMesh.MaterialOverride = material;
+	}
 
 	// Called when the node enters the scene tree for the first time. Initializes the objects to edit on runtime
 	public override void _Ready()
 	{
 		MyCol = GetNode<CollisionShape3D>("collision");
 		MyMesh = GetNode<MeshInstance3D>("texture");
-		updateTexture(makepath(0));
-		updateShape(makepath(1), makepath(3));
-		updateUV();
-    }
+	}
 
 }

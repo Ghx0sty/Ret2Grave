@@ -1,37 +1,38 @@
-[gd_scene load_steps=9 format=3 uid="uid://tgvewpgreb4h"]
+[gd_scene load_steps=10 format=3 uid="uid://tgvewpgreb4h"]
 
 [ext_resource type="Script" path="res://addons/myaddon/myblocks.cs" id="1_jj0x7"]
-[ext_resource type="Texture2D" uid="uid://cp5w3bmipb2lj" path="res://Texture/PlasticTexture/PlasticABSWorn001_GLOSS_2K.png" id="2_tm3ht"]
-[ext_resource type="Texture2D" uid="uid://dhidj4q4bwxrk" path="res://Texture/PlasticTexture/PlasticABSWorn001_COL_2K.png" id="3_h8hgx"]
-[ext_resource type="Texture2D" uid="uid://c41g6xmi3oisw" path="res://Texture/PlasticTexture/PlasticABSWorn001_REFL_2K.png" id="4_g2cmp"]
-[ext_resource type="Texture2D" uid="uid://diqmgi70e22u0" path="res://Texture/PlasticTexture/PlasticABSWorn001_NRM_2K.png" id="5_kwscq"]
+[ext_resource type="Texture2D" uid="uid://btmuvqdew08rj" path="res://Texture/WoodTexture/VeneerWhiteOakRandomMatched001_COL_2K_METALNESS.png" id="2_vb2e0"]
+[ext_resource type="Texture2D" uid="uid://ib8n1ipd0nwp" path="res://Texture/WoodTexture/VeneerWhiteOakRandomMatched001_METALNESS_2K_METALNESS.png" id="3_uspfi"]
+[ext_resource type="Texture2D" uid="uid://beoajtlebmif2" path="res://Texture/WoodTexture/VeneerWhiteOakRandomMatched001_NRM_2K_METALNESS.png" id="4_b8b01"]
+[ext_resource type="Texture2D" uid="uid://wjv0a6rkxwhv" path="res://Texture/WoodTexture/VeneerWhiteOakRandomMatched001_ROUGHNESS_2K_METALNESS.png" id="5_iqr48"]
+[ext_resource type="Material" uid="uid://cbl0qchmmn21f" path="res://addons/myaddon/textures/wood.tres" id="6_hg0ak"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vrjhj"]
-albedo_color = Color(0.501961, 1, 0.501961, 1)
-albedo_texture = ExtResource("2_tm3ht")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pejfw"]
+albedo_color = Color(0, 0, 0, 1)
+albedo_texture = ExtResource("2_vb2e0")
+metallic = 1.0
+metallic_texture = ExtResource("3_uspfi")
+roughness_texture = ExtResource("5_iqr48")
 normal_enabled = true
-normal_texture = ExtResource("5_kwscq")
-detail_enabled = true
-detail_mask = ExtResource("4_g2cmp")
-detail_albedo = ExtResource("3_h8hgx")
-detail_normal = ExtResource("5_kwscq")
-uv1_scale = Vector3(11.6667, 11.6667, 11.6667)
-uv2_scale = Vector3(40, 40, 40)
+normal_texture = ExtResource("4_b8b01")
+uv1_scale = Vector3(10.6667, 10.6667, 10.6667)
 
-[sub_resource type="BoxMesh" id="BoxMesh_oaqrr"]
-size = Vector3(1, 5, 7)
+[sub_resource type="BoxMesh" id="BoxMesh_dn5wv"]
+material = ExtResource("6_hg0ak")
+size = Vector3(8, 1, 8)
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_oqavf"]
-data = PackedVector3Array(-0.5, 2.5, 3.5, 0.5, 2.5, 3.5, -0.5, -2.5, 3.5, 0.5, 2.5, 3.5, 0.5, -2.5, 3.5, -0.5, -2.5, 3.5, 0.5, 2.5, -3.5, -0.5, 2.5, -3.5, 0.5, -2.5, -3.5, -0.5, 2.5, -3.5, -0.5, -2.5, -3.5, 0.5, -2.5, -3.5, 0.5, 2.5, 3.5, 0.5, 2.5, -3.5, 0.5, -2.5, 3.5, 0.5, 2.5, -3.5, 0.5, -2.5, -3.5, 0.5, -2.5, 3.5, -0.5, 2.5, -3.5, -0.5, 2.5, 3.5, -0.5, -2.5, -3.5, -0.5, 2.5, 3.5, -0.5, -2.5, 3.5, -0.5, -2.5, -3.5, 0.5, 2.5, 3.5, -0.5, 2.5, 3.5, 0.5, 2.5, -3.5, -0.5, 2.5, 3.5, -0.5, 2.5, -3.5, 0.5, 2.5, -3.5, -0.5, -2.5, 3.5, 0.5, -2.5, 3.5, -0.5, -2.5, -3.5, 0.5, -2.5, 3.5, 0.5, -2.5, -3.5, -0.5, -2.5, -3.5)
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_x3ck3"]
+data = PackedVector3Array(-4, 0.5, 4, 4, 0.5, 4, -4, -0.5, 4, 4, 0.5, 4, 4, -0.5, 4, -4, -0.5, 4, 4, 0.5, -4, -4, 0.5, -4, 4, -0.5, -4, -4, 0.5, -4, -4, -0.5, -4, 4, -0.5, -4, 4, 0.5, 4, 4, 0.5, -4, 4, -0.5, 4, 4, 0.5, -4, 4, -0.5, -4, 4, -0.5, 4, -4, 0.5, -4, -4, 0.5, 4, -4, -0.5, -4, -4, 0.5, 4, -4, -0.5, 4, -4, -0.5, -4, 4, 0.5, 4, -4, 0.5, 4, 4, 0.5, -4, -4, 0.5, 4, -4, 0.5, -4, 4, 0.5, -4, -4, -0.5, 4, 4, -0.5, 4, -4, -0.5, -4, 4, -0.5, 4, 4, -0.5, -4, -4, -0.5, -4)
 
 [node name="myblocks" type="StaticBody3D"]
 script = ExtResource("1_jj0x7")
+BlockTexture = 1
 
 [node name="texture" type="MeshInstance3D" parent="."]
-transform = Transform3D(1.90239, 0, 0, 0, 1.88999, 0, 0, 0, 1.90643, 0, 1.19209e-07, 0)
-material_override = SubResource("StandardMaterial3D_vrjhj")
-mesh = SubResource("BoxMesh_oaqrr")
+transform = Transform3D(2, 0, 0, 0, 1.987, 0, 0, 0, 2.004, 0, 1.19209e-07, 0)
+material_override = SubResource("StandardMaterial3D_pejfw")
+mesh = SubResource("BoxMesh_dn5wv")
 
 [node name="collision" type="CollisionShape3D" parent="."]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
-shape = SubResource("ConcavePolygonShape3D_oqavf")
+shape = SubResource("ConcavePolygonShape3D_x3ck3")

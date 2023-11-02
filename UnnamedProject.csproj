@@ -3,4 +3,7 @@
     <TargetFramework>net6.0</TargetFramework>
     <EnableDynamicLoading>true</EnableDynamicLoading>
   </PropertyGroup>
+  <ItemGroup>
+    <Content Include="addons\myaddon\cache.txt" />
+  </ItemGroup>
 </Project>

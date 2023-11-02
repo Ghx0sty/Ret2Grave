@@ -1,0 +1,53 @@
+					if (direction != Vector3.Zero)
+		{
+			if (Momentum > 1f)
+			{
+				Momentum -= 0.1f;
+			}
+
+			if (IsOnFloor())
+			{
+					
+				if (Input.IsActionPressed("sprint"))
+				{
+					velocity.X = direction.X * Speed * ((sprintconst + Momentum)/2);
+					velocity.Z = direction.Z * Speed * ((sprintconst + Momentum/2));
+				}
+				else
+				{
+					velocity.X = direction.X * Speed * Momentum;
+					velocity.Z = direction.Z * Speed * Momentum;
+				}
+			}
+			else
+			{
+																							//Find a way to mix both sprint and air momentum here.
+				velocity.X = direction.X * Speed * ((AirAcceleration + Momentum)/2);
+				velocity.Z = direction.Z * Speed * ((AirAcceleration + Momentum)/2);
+				if (AirAcceleration < 1)
+				{
+					AirAcceleration -= 0.1f;
+				}
+			}
+		}
+		else{
+		
+		
+		
+		
+		
+		
+		
+		}
+			if (IsOnFloor())
+			{
+				velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed * Momentum);
+				velocity.Z = Mathf.MoveToward(Velocity.Z, 0, Speed * Momentum);
+			}
+			else
+			{
+				velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed * AirAcceleration);
+				velocity.Z = Mathf.MoveToward(Velocity.Z, 0, Speed * AirAcceleration);
+				AirAcceleration -= 0.2f;
+			}	
+
